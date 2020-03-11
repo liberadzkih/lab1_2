@@ -26,7 +26,8 @@ public class Id implements Serializable {
         this.id = id;
     }
 
-    protected Id() {}
+    protected Id() {
+    }
 
     public static Id generate() {
         return new Id(UUID.randomUUID().toString());
