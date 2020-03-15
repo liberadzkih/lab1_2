@@ -14,6 +14,8 @@ package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
+import java.math.BigDecimal;
+
 public class Tax {
 
     private Money amount;
@@ -34,4 +36,29 @@ public class Tax {
         return description;
     }
 
+    public static Tax generateTax(RequestItem item) {
+        BigDecimal ratio = null;
+        String desc = null;
+        Money taxValue = null;
+
+        switch (item.getProductData().getType()) {
+            case DRUG:
+                ratio = BigDecimal.valueOf(0.05);
+                desc = "5% (D)";
+                taxValue = item.getTotalCost().multiplyBy(ratio);
+                return new Tax(taxValue, desc);
+            case FOOD:
+                ratio = BigDecimal.valueOf(0.07);
+                desc = "7% (F)";
+                taxValue = item.getTotalCost().multiplyBy(ratio);
+                return new Tax(taxValue, desc);
+            case STANDARD:
+                ratio = BigDecimal.valueOf(0.23);
+                desc = "23%";
+                taxValue = item.getTotalCost().multiplyBy(ratio);
+                return new Tax(taxValue, desc);
+            default:
+                throw new IllegalArgumentException(item.getProductData().getType() + " not handled");
+        }
+    }
 }
