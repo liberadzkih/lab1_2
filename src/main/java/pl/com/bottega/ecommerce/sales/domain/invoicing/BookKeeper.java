@@ -21,7 +21,7 @@ import pl.com.bottega.ecommerce.sales.domain.Factory;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class BookKeeper {
-
+//dd
     public Invoice issuance(ClientData client, List<RequestItem> items) {
         Invoice invoice = Factory.createInvoice(Id.generate(), client);
 
