@@ -26,7 +26,8 @@ public class Id implements Serializable {
         this.id = id;
     }
 
-    protected Id() {}
+    protected Id() {
+    }
 
     public static Id generate() {
         return new Id(UUID.randomUUID().toString());
@@ -36,13 +37,11 @@ public class Id implements Serializable {
         return id;
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         return id.hashCode();
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    @Override public boolean equals(Object obj) {
         if (this == obj)
             return true;
         if (obj == null)
@@ -58,8 +57,7 @@ public class Id implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return id;
     }
 }
