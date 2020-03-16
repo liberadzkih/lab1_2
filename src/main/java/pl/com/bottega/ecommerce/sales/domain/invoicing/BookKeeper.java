@@ -13,11 +13,14 @@
 package pl.com.bottega.ecommerce.sales.domain.invoicing;
 
 import java.math.BigDecimal;
+
+import pl.com.bottega.ecommerce.ICalculator;
 import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sales.domain.Factory;
+import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductType;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
-public class BookKeeper {
+public class BookKeeper implements ICalculator {
 
     public Invoice issuance(InvoiceRequest invoiceRequest) {
         Invoice invoice = Factory.createInvoice(Id.generate(), invoiceRequest.getClient());
@@ -56,4 +59,7 @@ public class BookKeeper {
         return invoice;
     }
 
+    @Override public Money calculate(ProductType type) {
+        return null;
+    }
 }
