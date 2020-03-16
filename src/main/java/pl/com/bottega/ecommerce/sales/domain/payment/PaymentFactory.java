@@ -5,7 +5,8 @@ import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class PaymentFactory {
-    static Payment createPayment(ClientData clientData, Money amount) {
+
+    public Payment createPayment(ClientData clientData, Money amount) {
         return new Payment(Id.generate(), clientData, amount);
     }
 }

@@ -18,6 +18,8 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class Payment {
 
+    private PaymentFactory paymentFactory;
+
     private ClientData clientData;
 
     private Money amount;
@@ -32,6 +34,6 @@ public class Payment {
 
     public Payment rollBack() {
         Id id = Id.generate();
-        return PaymentFactory.createPayment(clientData, amount.multiplyBy(-1));
+        return paymentFactory.createPayment(clientData, amount.multiplyBy(-1));
     }
 }
