@@ -21,10 +21,11 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class BookKeeper {
 
-    public Invoice issuance(ClientData client, List<RequestItem> items) {
+    public Invoice issuance(InvoiceRequest invoiceRequest) {
+        ClientData client = invoiceRequest.getClient();
         Invoice invoice = Invoice.createInvoiceFrom(Id.generate(), client);
 
-        for (RequestItem item : items) {
+        for (RequestItem item : invoiceRequest.getItems()) {
             Money net = item.getTotalCost();
             BigDecimal ratio = null;
             String desc = null;
