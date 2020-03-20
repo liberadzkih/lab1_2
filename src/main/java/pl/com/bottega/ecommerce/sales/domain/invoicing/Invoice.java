@@ -49,7 +49,6 @@ public class Invoice {
     }
 
     /**
-     * 
      * @return immutable projection
      */
     public List<InvoiceLine> getItems() {
@@ -68,4 +67,7 @@ public class Invoice {
         return gros;
     }
 
+    public static Invoice createNewInvoice(Id invoiceId, ClientData clientData) {
+        return new Invoice(invoiceId, clientData);
+    }
 }
