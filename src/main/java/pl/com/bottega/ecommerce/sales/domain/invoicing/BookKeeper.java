@@ -21,13 +21,7 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 public class BookKeeper {
 
-    private TaxCalculator taxCalculator;
-
-    public BookKeeper(TaxCalculator taxCalculator) {
-        this.taxCalculator = taxCalculator;
-    }
-
-         public Invoice issuance(InvoiceRequest invoiceRequest) {
+    public Invoice issuance(InvoiceRequest invoiceRequest, TaxCalculator taxCalculator) {
         Invoice invoice = Invoice.buildInvoice(Id.generate(), invoiceRequest.getClient());
 
         for (RequestItem item : invoiceRequest.getItems()) {
