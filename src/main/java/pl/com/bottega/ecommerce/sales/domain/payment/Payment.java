@@ -31,8 +31,7 @@ public class Payment {
     }
 
     public Payment rollBack() {
-        Id id = Id.generate();
 
-        return new Payment(id, clientData, amount.multiplyBy(-1));
+        return PaymentFactory.createPayment(clientData,amount.multiplyBy(-1));
     }
 }
