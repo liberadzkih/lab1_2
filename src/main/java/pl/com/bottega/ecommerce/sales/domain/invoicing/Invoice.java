@@ -32,24 +32,20 @@ public class Invoice {
 
     private Id id;
 
-    private Invoice() {
+    private Invoice(Id invoiceId, ClientData client) {
+        this.id = invoiceId;
+        this.client = client;
+        this.items = new ArrayList<InvoiceLine>();
+        this.net = Money.ZERO;
+        this.gros = Money.ZERO;
     }
 
     public static Invoice buildInvoice(Id invoiceId, ClientData client){
-        Invoice invoice= new Invoice();
-        invoice.id = invoiceId;
-        invoice.client = client;
-        invoice.items = new ArrayList<InvoiceLine>();
-        invoice.net = Money.ZERO;
-        invoice.gros = Money.ZERO;
-
-        return invoice;
-
+        return new Invoice(invoiceId, client);
     }
 
     public void addItem(InvoiceLine item) {
         items.add(item);
-
         net = net.add(item.getNet());
         gros = gros.add(item.getGros());
     }
