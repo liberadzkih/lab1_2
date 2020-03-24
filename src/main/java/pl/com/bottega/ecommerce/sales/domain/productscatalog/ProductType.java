@@ -12,36 +12,9 @@
  */
 package pl.com.bottega.ecommerce.sales.domain.productscatalog;
 
-import java.math.BigDecimal;
-
-import pl.com.bottega.ecommerce.sales.domain.invoicing.Tax;
-import pl.com.bottega.ecommerce.sharedkernel.Money;
-
 public enum ProductType {
-
-    DRUG {
-
-        @Override
-        public Tax computeTax(Money net) {
-            return new Tax(net.multiplyBy(BigDecimal.valueOf(0.05)), "5% (f)");
-        }
-    },
-    FOOD {
-
-        @Override
-        public Tax computeTax(Money net) {
-            return new Tax(net.multiplyBy(BigDecimal.valueOf(0.07)), "7% (D)");
-        }
-    },
+    DRUG,
+    FOOD,
     STANDARD
 
-    {
-
-        @Override
-        public Tax computeTax(Money net) {
-            return new Tax(net.multiplyBy(BigDecimal.valueOf(0.23)), "23%");
-        }
-    };
-
-    public abstract Tax computeTax(Money net);
 }
