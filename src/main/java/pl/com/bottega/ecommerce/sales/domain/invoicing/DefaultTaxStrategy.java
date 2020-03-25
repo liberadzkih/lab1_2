@@ -4,8 +4,9 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 
 import java.math.BigDecimal;
 
-public interface TaxFactory {
-    default Tax getTax(RequestItem item) {
+public class DefaultTaxStrategy implements TaxStrategy {
+    @Override
+    public Tax calculateTax(RequestItem item) {
         Money net = item.getTotalCost();
         BigDecimal ratio = null;
         String desc = null;
