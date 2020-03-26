@@ -19,6 +19,7 @@ import pl.com.bottega.ecommerce.sharedkernel.Money;
 import java.util.List;
 
 import static pl.com.bottega.ecommerce.sales.domain.invoicing.InvoiceFactory.createInvoice;
+import static pl.com.bottega.ecommerce.sales.domain.invoicing.InvoiceLineFactory.createInvoiceLine;
 
 public class BookKeeper {
 
@@ -29,7 +30,7 @@ public class BookKeeper {
             Money net = item.getTotalCost();
             Tax tax = taxCalculate.calculateTax(item);
 
-            InvoiceLine invoiceLine = new InvoiceLine(item.getProductData(), item.getQuantity(), net, tax);
+            InvoiceLine invoiceLine = createInvoiceLine(item.getProductData(), item.getQuantity(), net, tax);
             invoice.addItem(invoiceLine);
         }
 
